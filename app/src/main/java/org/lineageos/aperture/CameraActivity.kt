@@ -61,7 +61,7 @@ import androidx.camera.video.VideoRecordEvent
 import androidx.camera.video.isAudioSourceConfigured
 import androidx.camera.video.muted
 import androidx.camera.view.CameraController
-import androidx.camera.view.LifecycleCameraController
+import androidx.camera.view.ApertureCameraController
 import androidx.camera.view.PreviewView
 import androidx.camera.view.ScreenFlashView
 import androidx.camera.view.onPinchToZoom
@@ -199,7 +199,7 @@ open class CameraActivity : AppCompatActivity(R.layout.activity_camera) {
     private val powerManager by lazy { getSystemService(PowerManager::class.java) }
 
     // Core camera utils
-    private lateinit var cameraController: LifecycleCameraController
+    private lateinit var cameraController: ApertureCameraController
     private lateinit var cameraSoundsUtils: CameraSoundsUtils
     private val sharedPreferences by lazy {
         PreferenceManager.getDefaultSharedPreferences(this)
@@ -570,7 +570,7 @@ open class CameraActivity : AppCompatActivity(R.layout.activity_camera) {
         ShortcutsUtils.registerShortcuts(this)
 
         // Initialize the camera controller
-        cameraController = LifecycleCameraController(this)
+        cameraController = ApertureCameraController(this)
 
         // Initialize sounds utils
         cameraSoundsUtils = CameraSoundsUtils(sharedPreferences)
